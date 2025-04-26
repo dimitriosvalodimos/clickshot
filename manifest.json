@@ -1,0 +1,33 @@
+{
+  "name": "clickshot",
+  "description": "take screenshots while navigating a site",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "js": ["./scripts/content.js"],
+      "matches": ["https://*.kilanka.de/*"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["scripts/jszip.min.js"],
+      "matches": ["https://*.kilanka.de/*"]
+    }
+  ],
+  "host_permissions": ["<all_urls>"],
+  "permissions": [
+    "unlimitedStorage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage"
+  ]
+}

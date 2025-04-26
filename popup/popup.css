@@ -1,0 +1,56 @@
+:root {
+  --radius: 5px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+input {
+  width: 180px;
+  margin: 10px 0;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid black;
+
+  &:disabled  {
+    cursor: none;
+  }
+}
+
+button {
+  width: 200px;
+  margin: 5px 0;
+  padding: 8px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: #01e676;
+  transition: 0.1s all ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #01d86f;
+  }
+
+  &:active {
+    background-color: #01ca68;
+  }
+}
+
+#stop {
+  display: none;
+  background-color: #fa432a;
+
+  &:hover {
+    background-color: #f92a0d;
+  }
+
+  &:active {
+    background-color: #e42005;
+  }
+}
