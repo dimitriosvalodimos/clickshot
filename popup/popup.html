@@ -6,10 +6,12 @@
     <link href="popup.css" rel="stylesheet" />
     <title>Clickshot</title>
   </head>
-  <body id="body">
+  <body>
     <input id="filename" type="text" placeholder="project name..." />
-    <button id="start">start recording</button>
-    <button id="stop">stop recording</button>
+    <div class="container">
+      <button class="start">Start</button>
+      <button class="stop">Stop</button>
+    </div>
     <p id="counter"></p>
     <script src="../scripts/jszip.min.js"></script>
     <script src="popup.js"></script>

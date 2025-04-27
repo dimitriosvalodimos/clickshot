@@ -1,20 +1,18 @@
-const STATE = "state";
-
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.action === "click_screenshot") {
-    chrome.storage.local.get(STATE, ({ state }) => {
-      if (!state || !state.recording) return;
+  if (msg.action !== "click_screenshot") return;
 
-      chrome.tabs.captureVisibleTab(null, { format: "png" }, (dataUrl) => {
-        if (dataUrl) {
-          chrome.storage.local.set({
-            [STATE]: {
-              ...state,
-              screenshots: [...state.screenshots, dataUrl],
-            },
-          });
-        }
+  chrome.storage.local.get("state", ({ state }) => {
+    if (!state || !state.recording) return;
+
+    chrome.tabs.captureVisibleTab(null, { format: "png" }, (dataUrl) => {
+      if (!dataUrl) return;
+
+      chrome.storage.local.set({
+        state: {
+          ...state,
+          screenshots: [...state.screenshots, dataUrl],
+        },
       });
     });
-  }
+  });
 });
